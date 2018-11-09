@@ -15,7 +15,7 @@ app.use(express.json());
 
 var customers = [
     {
-        routeName: "first",
+        id: "1",
         name: "early bird",
         phoneNum: "972-420-6969",
         email: "urmomizhawt@blowme.com",
@@ -31,6 +31,10 @@ app.get("/", function(req, res) {
   app.get("/tables", function(req, res) {
     res.sendFile(path.join(__dirname, "tables.html"));
   });
+
+  app.get("/reserve", function(req, res) {
+    res.sendFile(path.join(__dirname, "reserve.html"));
+  });
   
   // Displays all customers
     app.get("/api/customers", function(req, res) {
@@ -44,7 +48,7 @@ app.get("/api/customers/:customer", function(req, res) {
     console.log(chosen);
   
     for (var i = 0; i < customers.length; i++) {
-      if (chosen === customers[i].routeName) {
+      if (chosen === customers[i].id) {
         return res.json(customers[i]);
       }
     }

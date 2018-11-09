@@ -1,4 +1,22 @@
-function runTableQuery() {
+// In this code, jQuery is used to "download" the data from our server
+  // We then dynamically display this content in our table. This is very similar to the group projects you just completed.
+  // It's also very similar to the NYT search application. In fact, I copied a ton of code from there.
+  var express = require("express");
+  var path = require("path");
+  
+  // Sets up the Express App
+  // =============================================================
+  var app = express();
+  var PORT = 3000;
+  
+  // Sets up the Express app to handle data parsing
+  app.use(express.urlencoded({ extended: true }));
+  app.use(express.json());
+
+  $( document ).ready(function() {
+    // Handler for .ready() called.
+  
+  function runTableQuery() {
     // The AJAX function uses the URL of our API to GET the data associated with it (initially set to localhost)
     $.ajax({ url: "/api/tables", method: "GET" })
       .then(function (tableData) {
@@ -14,10 +32,12 @@ function runTableQuery() {
           listItem.append(
             $("<h2>").text("Table #" + (i + 1)),
             $("<hr>"),
-            $("<h2>").text("ID: " + tableData[i].customerID),
-            $("<h2>").text("Name: " + tableData[i].customerName),
-            $("<h2>").text("Email: " + tableData[i].customerEmail),
-            $("<h2>").text("Phone: " + tableData[i].phoneNumber)
+            $("<h2>").text("ID: " + tableData[i].id),
+            $("<h2>").text("Name: " + tableData[i].name),
+            $("<h2>").text("Phone: " + tableData[i].phoneNum),
+            $("<h2>").text("Email: " + tableData[i].email),
+            $("<h2>").text("Unique ID: " + tableData[i].uniqueID),
+            
           );
           tableList.append(listItem);
         }
@@ -62,3 +82,4 @@ function runTableQuery() {
   // ==========================================
   runTableQuery();
   runWaitListQuery();
+});
