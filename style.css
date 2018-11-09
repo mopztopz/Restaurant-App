@@ -1,0 +1,30 @@
+/* app css */
+body{
+    background-color: #9DC6B0;
+}
+.display-4{
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+.btn-primary{
+  display: inline-block;
+  background-color:#9DC6B0;
+  margin-bottom: 15px;
+  text-decoration: none;
+   
+}
+
+p{
+    text-align: center;
+}
+.jumbotron{
+    width: 80%;
+    margin: auto;
+    display: block;
+}
+.container{
+  margin: auto;
+  display: block;
+
+}
